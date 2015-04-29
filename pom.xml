@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements. See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership. The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>james-project</artifactId>
+        <groupId>org.apache.james</groupId>
+        <version>1.8.3-SNAPSHOT</version>
+        <relativePath>james-project</relativePath>
+    </parent>
+
+    <groupId>org.apache.james</groupId>
+    <artifactId>apache-james-parent</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Apache James :: Parent</name>
+    <description>Apache James Parent</description>
+
+    <modules>
+        <module>james-project</module>
+        <module>modules/jdkim</module>
+        <module>modules/jsieve</module>
+        <module>modules/jspf</module>
+        <module>modules/protocols</module>
+        <module>modules/mailet</module>
+        <module>modules/mime4j</module>
+        <module>modules/mailbox</module>
+        <module>modules/james</module>
+    </modules>
+
+    <properties>
+        <james.version>3.0.0-beta5-SNAPSHOT</james.version>
+        <james-jdkim.version>0.3-SNAPSHOT</james-jdkim.version>
+        <james-jsieve.version>0.6-SNAPSHOT</james-jsieve.version>
+        <james-jspf.version>1.0.1-SNAPSHOT</james-jspf.version>
+        <james-mailbox.version>0.6-SNAPSHOT</james-mailbox.version>
+        <james-mailet.version>2.5.1-SNAPSHOT</james-mailet.version>
+        <james-mime4j.version>0.7.2</james-mime4j.version>
+        <james-project.version>1.8.3-SNAPSHOT</james-project.version>
+        <protocols.version>1.6.4-SNAPSHOT</protocols.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.james</groupId>
+                <artifactId>james-project</artifactId>
+                <version>${james-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.james</groupId>
+                <artifactId>apache-jdkim-project</artifactId>
+                <version>${james-jdkim.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.james</groupId>
+                <artifactId>apache-jsieve</artifactId>
+                <version>${james-jsieve.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.james</groupId>
+                <artifactId>apache-jspf-project</artifactId>
+                <version>${james-jspf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.james</groupId>
+                <artifactId>protocols</artifactId>
+                <version>${protocols.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.james</groupId>
+                <artifactId>apache-mailet</artifactId>
+                <version>${james-mailet.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.james</groupId>
+                <artifactId>apache-mime4j-project</artifactId>
+                <version>${james-mime4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.james</groupId>
+                <artifactId>apache-james-mailbox</artifactId>
+                <version>${james-mailbox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.james</groupId>
+                <artifactId>james-server</artifactId>
+                <version>${james.version}</version>
+            </dependency>
+       </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-remote-resources-plugin</artifactId>
+                <version>1.5</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+
