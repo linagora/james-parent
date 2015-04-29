@@ -1,0 +1,61 @@
+= Apache James parent project
+OpenPaas Team <lgs-openpaas-dev@linagora.com>;
+:imagesdir: images
+:numbered:
+:sectlink:
+:sectids:
+:toc: left
+:toclevels: 2
+:icons: font
+
+== About
+
+The main goal of this project is to provide a maven based parent project to +Apache James+. +
+So, building phase may be checked with a single command.
+
+
+== Building in Docker
+
+[NOTE]
+====
+You need to install https://docs.docker.com[+docker+] before going ahead. +
+Please follow the installation process corresponding to your environment.
+====
+
+=== Build the Docker image
+
+[source]
+----
+$ docker build -t james/parent .
+----
+
+=== Run the build in Docker
+
+In order to run the build, you have to launch the following command:
+
+[source]
+----
+$ docker run -v $PWD/.m2:/root/.m2 -v $PWD:/origin -t james/parent BRANCH skipTests
+----
+
+Where:
+
+- +$PWD/.m2:/root/.m2+: is the first volume used to share the +maven+ repository, +
+as we don't want to download all dependencies on each build
+- +$PWD:/origin+: is the second volume used to share the +james-parent+ repository, +
+as we don't want to clone it in docker
+- +BRANCH+: is the given +git+ branch of the +james-parent+ repository to build
+- +skipTests+: is an optional keyword, when given tests will not be played while building
+
+== Under the hood
+
+Other +Apache James+ projects are linked to this project by using +git+ submodules.
+
+The following commands will give you a working state for the given +git+ branch:
+[source]
+----
+$ git checkout BRANCH
+$ git submodule init
+$ git submodule update
+----
+
