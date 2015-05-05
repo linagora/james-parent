@@ -48,6 +48,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
         <module>modules/mime4j</module>
         <module>modules/mailbox</module>
         <module>modules/james</module>
+        <module>modules/mpt</module>
     </modules>
 
     <properties>
@@ -60,6 +61,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
         <james-mime4j.version>0.7.2</james-mime4j.version>
         <james-project.version>1.8.3-SNAPSHOT</james-project.version>
         <protocols.version>1.6.4-SNAPSHOT</protocols.version>
+        <mpt.version>0.2-SNAPSHOT</mpt.version>
     </properties>
 
     <dependencyManagement>
@@ -108,6 +110,11 @@ http://maven.apache.org/maven-v4_0_0.xsd">
                 <groupId>org.apache.james</groupId>
                 <artifactId>james-server</artifactId>
                 <version>${james.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.james</groupId>
+                <artifactId>apache-james-mpt</artifactId>
+                <version>${mpt.version}</version>
             </dependency>
        </dependencies>
     </dependencyManagement>

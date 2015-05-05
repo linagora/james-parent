@@ -25,3 +25,6 @@
 [submodule "james-project"]
 	path = james-project
 	url = https://ci.open-paas.org/stash/scm/~mbaechler/james-project.git
+[submodule "modules/mpt"]
+	path = modules/mpt
+	url = https://ci.open-paas.org/stash/scm/jwc/james-mpt.git
