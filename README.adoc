@@ -49,6 +49,95 @@ for example: _/tmp:/destination_ will produce _/tmp/james-server-app-3.0.0-beta5
 - +BRANCH+: is the given +git+ branch of the +james-parent+ repository to build
 - +skipTests+: is an optional keyword, when given tests will not be played while building
 
+== Running James in docker
+
+==== Requirements
+
+You should have the zip resulting of the build in the ./destination folder.
+
+==== How to ?
+
+You need a running cassandra in docker. To achieve this run :
+
+[source]
+----
+$ docker run --name=cassandra cassandra
+----
+
+We need to provide the key we will use for TLS. For obvious reasons, this is not provided in this git.
+
+Copy your TSL keys to destination/conf/keystore or generate it using :
+
+[source]
+----
+keytool -genkey -alias james -keyalg RSA -keystore destination/conf/keystore
+----
+
+Then we need to build james container :
+
+[source]
+----
+$ docker build -f JamesRunDockerfile -t james_run ./
+----
+
+To run this container :
+
+[source]
+----
+$ docker run --hostname HOSTNAME -p "25:25" -p "110:110" -p "143:143" -p "465:465" -p "587:587" -p "993:993" --link cassandra:cassandra -t james_run
+----
+
+Where :
+
+- +HOSTNAME+ is the hostname you want to give to your James container. This DNS entry will be used to send mail to your James server.
+
+=== Useful commands
+
+==== How to add a domain ?
+
+[source]
+----
+# Add DOMAIN to 127.0.0.1 in your host /etc/hosts
+$ docker exec JAMES_CONTAINER_ID /root/james-server-app-3.0.0-beta5-SNAPSHOT/bin/james-cli.sh -h 127.0.0.1 -p 9999 adddomain DOMAIN
+----
+
+Where :
+
+- +DOMAIN+ is the domain you want to add.
+- +JAMES_CONTAINER_ID+ is the docker ID of your james container.
+
+==== How to add a user ?
+
+[source]
+----
+$ docker exec JAMES_CONTAINER_ID /root/james-server-app-3.0.0-beta5-SNAPSHOT/bin/james-cli.sh -h 127.0.0.1 -p 9999 adduser USER_MAIL_ADDRESS PASSWORD
+----
+
+Where :
+
+- +USER_MAIL_ADDRESS+ is the mail address that will be used by this user.
+- +PASSWORD+ is the password that will be used by this user.
+- +JAMES_CONTAINER_ID+ is the docker ID of your james container
+
+You can then just add DOMAIN to your /etc/hosts and you can connect to your james account with for instance thunderbird.
+
+==== I want to retrieve users and password from my previous container
+
+Some james data ( those non related to mailbox, eg : mail queue, domains, users, rrt, SIEVE scripts, mail repositories ) are not yet supported by our Cassandra implementation.
+
+To keep these data when you run a new container, you can mount the following volume :
+
+[source]
+----
+ -v /root/james-server-app-3.0.0-beta5-SNAPSHOT/var:WORKDIR/destination/var
+----
+
+Where :
+
+- +WORKDIR+ is the absolute path to your james-parent workdir.
+
+Beware : you will have concurrency issues if multiple containers are running on this single volume.
+
 == Under the hood
 
 Other +Apache James+ projects are linked to this project by using +git+ submodules.
