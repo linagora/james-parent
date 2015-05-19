@@ -17,6 +17,8 @@ for i in `git submodule | cut -d' ' -f2`; do
       git config submodule.$i.url $ORIGIN/$i
    fi
 done
+
+git submodule init
 git submodule update
 
 if [ "$2" = "skipTests" ]; then
