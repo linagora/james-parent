@@ -35,7 +35,7 @@ In order to run the build, you have to launch the following command:
 
 [source]
 ----
-$ docker run -v $PWD/.m2:/root/.m2 -v $PWD:/origin -v DESTINATION_FOLDER:/destination -t james/parent BRANCH skipTests
+$ docker run -v $PWD/.m2:/root/.m2 -v $PWD:/origin -v $PWD/destination:/destination -t james/parent BRANCH skipTests
 ----
 
 Where:
@@ -44,8 +44,8 @@ Where:
 as we don't want to download all dependencies on each build
 - +$PWD:/origin+: is the second volume used to share the +james-parent+ repository, +
 as we don't want to clone it in docker
-- +DESTINATION_FOLDER:/destination+: is the third volume used to get the compiled elements, +
-for example: _/tmp:/destination_ will produce _/tmp/james-server-app-3.0.0-beta5-SNAPSHOT-app.zip_
+- +$PWD/destination:/destination+: is the third volume used to get the compiled elements, +
+as it is needed by the container that will run James.
 - +BRANCH+: is the given +git+ branch of the +james-parent+ repository to build
 - +skipTests+: is an optional keyword, when given tests will not be played while building
 
