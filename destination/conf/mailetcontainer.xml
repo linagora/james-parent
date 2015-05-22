@@ -33,6 +33,11 @@
         <processor state="root" enableJmx="true">
             <mailet match="All" class="PostmasterAlias"/>
             <mailet match="RelayLimit=30" class="Null"/>
+            <!-- Hook on sievemanager@james.linagora.com
+                 Mail send to this address will get interpreted with SIEVE Manage -->
+            <mailet match="RecipientIs=sievemanager@james.linagora.com" class="ToProcessor">
+                <processor>sieve-manager-check</processor>
+            </mailet>
             <mailet match="HasMailAttribute=spamChecked" class="ToProcessor">
                 <processor>transport</processor>
             </mailet>
@@ -124,6 +129,34 @@
             <mailet match="All" class="DSNBounce">
                 <passThrough>false</passThrough>
             </mailet>
+        </processor>
+
+        <processor state="sieve-manager-check" enableJmx="true">
+            <!-- Only local users can manage their scripts -->
+            <mailet match="RecipientIsLocal" class="ToProcessor">
+                <processor>sieve-manager</processor>
+            </mailet>
+            <!-- Notify other people about their failure -->
+            <mailet match="All" class="Bounce">
+                <inline>heads</inline>
+                <attachment>none</attachment>
+                <passThrough>false</passThrough>
+                <prefix>[REJECTED]</prefix>
+                <notice>
+                    You can't send messages to configure SIEVE on this serveur unless you are the official SIEVE manager.
+                </notice>
+            </mailet>
+            <mailet match="All" class="Null"/>
+        </processor>
+
+        <processor state="sieve-manager">
+            <mailet match="All" class="SetMailAttribute">
+                <org.apache.james.SMTPAuthUser>true</org.apache.james.SMTPAuthUser>
+            </mailet>
+            <mailet match="All" class="org.apache.james.managesieve.mailet.ManageSieveMailet">
+                <helpURL>file:/root/james-server-app-3.0.0-beta5-SNAPSHOT/conf/managesieve.help.txt</helpURL>
+            </mailet>
+            <mailet match="All" class="Null"/>
         </processor>
     </processors>
 
