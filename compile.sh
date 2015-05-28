@@ -22,9 +22,9 @@ git submodule init
 git submodule update
 
 if [ "$2" = "skipTests" ]; then
-   mvn clean install -T1C -DskipTests
+   mvn clean install -T1C -DskipTests -Pcassandra,with-assembly
 else
-   mvn clean install
+   mvn clean install -Pcassandra,with-assembly 
 fi
 
 if [ $? -eq 0 ]; then
