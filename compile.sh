@@ -65,9 +65,9 @@ git submodule update
 # Compilation
 
 if [ "$SKIPTESTS" = "skipTests" ]; then
-   mvn clean install -T1C -DskipTests -Pcassandra,with-assembly
+   mvn clean install -T1C -DskipTests -Pcassandra,exclude-lucene,with-assembly,with-jetm
 else
-   mvn clean install -Pcassandra,with-assembly 
+   mvn clean install -Pcassandra,exclude-lucene,with-assembly,with-jetm 
 fi
 
 # Retrieve result
