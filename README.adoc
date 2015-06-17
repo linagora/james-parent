@@ -72,6 +72,13 @@ You need a running cassandra in docker. To achieve this run :
 $ docker run --name=cassandra cassandra
 ----
 
+You need a running ElasticSearch in docker. To achieve this run :
+
+[source]
+----
+$ docker run --name=elasticsearch elasticsearch:1.5.2
+----
+
 We need to provide the key we will use for TLS. For obvious reasons, this is not provided in this git.
 
 Copy your TSL keys to destination/conf/keystore or generate it using :
@@ -92,7 +99,7 @@ To run this container :
 
 [source]
 ----
-$ docker run --hostname HOSTNAME -p "25:25" -p "110:110" -p "143:143" -p "465:465" -p "587:587" -p "993:993" --link cassandra:cassandra -t james_run
+$ docker run --hostname HOSTNAME -p "25:25" -p "110:110" -p "143:143" -p "465:465" -p "587:587" -p "993:993" --link cassandra:cassandra --link elasticsearch:elasticsearch -t james_run
 ----
 
 Where :
