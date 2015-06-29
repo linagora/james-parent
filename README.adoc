@@ -35,19 +35,27 @@ In order to run the build, you have to launch the following command:
 
 [source]
 ----
-$ docker run -v $PWD/.m2:/root/.m2 -v $PWD:/origin -v $PWD/destination:/destination -t james/parent BRANCH skipTests
+$ docker run -v $PWD/.m2:/root/.m2 -v $PWD:/origin -v $PWD/destination:/destination -t james/parent -s -u URL BRANCH
 ----
 
 Where:
 
 - +$PWD/.m2:/root/.m2+: is the first volume used to share the +maven+ repository, +
 as we don't want to download all dependencies on each build
-- +$PWD:/origin+: is the second volume used to share the +james-parent+ repository, +
-as we don't want to clone it in docker
 - +$PWD/destination:/destination+: is the third volume used to get the compiled elements, +
 as it is needed by the container that will run James.
 - +BRANCH+: is the given +git+ branch of the +james-parent+ repository to build
-- +skipTests+: is an optional keyword, when given tests will not be played while building
+- +-s option+: given tests will not be played while building. Not specifying means play tests.
+- +-u URL+: Precise URL to clone. Default is to use /origin docker folder. In this case you have to provide the following volume :
+   - +$PWD:/origin+: is the second volume used to share the +james-parent+ repository, +
+as we don't want to clone it in docker
+
+Note : Using volumes on a distant host will not work. You can simply use the distant option :
+
+[source]
+----
+$ docker run -v /destination -t james/parent  -s -u https://ci.open-paas.org/stash/scm/jwc/james-parent.git BRANCH
+----
 
 == Running James in docker
 
