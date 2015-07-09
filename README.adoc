@@ -167,6 +167,31 @@ Where :
 
 Beware : you will have concurrency issues if multiple containers are running on this single volume.
 
+=== Running integration tests against your James container
+
+We wrote some MPT (James' Mail Protocols Tests subproject) integration tests to validate a James 
+deployement.
+
+It uses the External-James module, that can easily use environment variables to locate a distant 
+IMAP server and run integration tests against it.
+
+For that, you need to handle the domain +domain+ and configured user +imapuser+ with password 
++passord+. See above documentation to see how you can do this.
+
+You may want to run MPT tests inside docker. As you need to use maven, the simplest option is to 
+use james/parent image, and override the entry point ( as git and maven are already configured 
+there ) :
+
+----
+$ docker run -t --entrypoint="/root/integration_tests.sh" -v $PWD/.m2:/root/.m2 james/parent REPO_URL BRANCH JAMES_IP JAMES_PORT
+----
+
+Where :
+ - REPO_URL : James parent repository URL
+ - BRANCH : Branch to use in order to build integration tests
+ - JAMES_IP : IP address or DNS entry for your James server
+ - JAMES_PORT : Port allocated to James' IMAP port.
+
 == Under the hood
 
 Other +Apache James+ projects are linked to this project by using +git+ submodules.

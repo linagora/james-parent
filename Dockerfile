@@ -18,6 +18,7 @@ RUN apt-get install -y git="$GIT_VERSION"
 
 # Copy the script
 COPY compile.sh compile.sh
+COPY integration_tests.sh integration_tests.sh
 
 # Define the entrypoint
 WORKDIR /james-parent
