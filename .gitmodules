@@ -1,30 +1,30 @@
 [submodule "modules/mime4j"]
 	path = modules/mime4j
-	url = https://ci.open-paas.org/stash/scm/jwc/james-mime4j.git
+	url = https://github.com/linagora/james-mime4j.git
 [submodule "modules/protocols"]
 	path = modules/protocols
-	url = https://ci.open-paas.org/stash/scm/jwc/james-protocols.git
+	url = https://github.com/linagora/james-protocols.git
 [submodule "modules/mailet"]
 	path = modules/mailet
-	url = https://ci.open-paas.org/stash/scm/jwc/james-mailet.git
+	url = https://github.com/linagora/james-mailet.git
 [submodule "modules/mailbox"]
 	path = modules/mailbox
-	url = https://ci.open-paas.org/stash/scm/jwc/james-mailbox.git
+	url = https://github.com/linagora/james-mailbox.git
 [submodule "modules/jspf"]
 	path = modules/jspf
-	url = https://ci.open-paas.org/stash/scm/jwc/james-jspf.git
+	url = https://github.com/linagora/james-jspf.git
 [submodule "modules/jsieve"]
 	path = modules/jsieve
-	url = https://ci.open-paas.org/stash/scm/jwc/james-jsieve.git
+	url = https://github.com/linagora/james-jsieve.git
 [submodule "modules/jdkim"]
 	path = modules/jdkim
-	url = https://ci.open-paas.org/stash/scm/jwc/james-jdkim.git
+	url = https://github.com/linagora/james-jdkim.git
 [submodule "modules/james"]
 	path = modules/james
-	url = https://ci.open-paas.org/stash/scm/jwc/james.git
+	url = https://github.com/linagora/james.git
 [submodule "james-project"]
 	path = james-project
-	url = https://ci.open-paas.org/stash/scm/jwc/james-project.git
+	url = https://github.com/linagora/james-project.git
 [submodule "modules/mpt"]
 	path = modules/mpt
-	url = https://ci.open-paas.org/stash/scm/jwc/james-mpt.git
+	url = https://github.com/linagora/james-mpt.git
