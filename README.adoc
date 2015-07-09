@@ -14,6 +14,20 @@ The main goal of this project is to provide a maven based parent project to +Apa
 So, building phase may be checked with a single command.
 
 
+== Git configuration
+
+We are providing additional commands to git. +
+In order to install those commands, you have to modify the _.git/config_ file by adding the following lines:
+[source]
+----
+[include]
+        path = ../gitconfig
+----
+
+List of added commands:
+
+  * _git createbranches *BRANCH_*: creates the branch *BRANCH* on this projects and all submodules
+
 == Building in Docker
 
 [NOTE]
