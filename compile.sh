@@ -21,7 +21,6 @@ do
          SKIPTESTS="skipTests"
          ;;
       -u|--url)
-         echo "$1 $2"
          MODE="distant"
          REPO_URL=$2
          shift
@@ -32,13 +31,11 @@ do
          ;;
       *)
          if ! [ -z "$1" ]; then
-            echo "BRANCH $1"
             BRANCH=$1
          fi
          ;;
    esac
    if [ "0" -lt "$#" ]; then
-      echo "Shifting"
       shift
    fi
 done
