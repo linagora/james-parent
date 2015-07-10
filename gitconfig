@@ -1,2 +1,3 @@
 [alias]
 	createbranches = "!sh -c 'git checkout -b $1; git submodule foreach git checkout -b $1' -"
+	pushbranches = "!sh -c 'git push $1 $2; git submodule foreach git push $1 $2' -"

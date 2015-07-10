@@ -27,6 +27,7 @@ In order to install those commands, you have to modify the _.git/config_ file by
 List of added commands:
 
   * _git createbranches *BRANCH_*: creates the branch *BRANCH* on this projects and all submodules
+  * _git pushbranches *REPO* *BRANCH_*: pushes the branch *BRANCH* on this project and all submodules in the *REPO* repositories
 
 == Building in Docker
 
