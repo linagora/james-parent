@@ -56,8 +56,7 @@ if [ $MODE = "local" ]; then
       fi
    done
 else
-   git clone $REPO_URL -b $BRANCH
-   cd james-parent
+   git clone $REPO_URL . -b $BRANCH
 fi
 git submodule init
 git submodule update
