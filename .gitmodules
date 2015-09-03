@@ -28,3 +28,6 @@
 [submodule "modules/mpt"]
 	path = modules/mpt
 	url = https://github.com/linagora/james-mpt.git
+[submodule "modules/james-backends"]
+	path = modules/james-backends
+	url = https://github.com/linagora/james-backends.git
