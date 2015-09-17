@@ -25,6 +25,6 @@ git submodule foreach git checkout -b $RESULTING_BRANCH
 git submodule foreach git merge origin/$BRANCH
 git checkout trunk
 git checkout -b $RESULTING_BRANCH
-git merge origin/$BRANCH
+git merge --no-edit origin/$BRANCH
 git add modules/*
 git commit --allow-empty -m "Select merge commits in submodules"
