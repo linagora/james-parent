@@ -1,30 +1,30 @@
 [submodule "modules/mime4j"]
 	path = modules/mime4j
-	url = https://github.com/linagora/james-mime4j.git
+	url = https://github.com/aduprat/james-mime4j.git
 [submodule "modules/protocols"]
 	path = modules/protocols
-	url = https://github.com/linagora/james-protocols.git
+	url = https://github.com/aduprat/james-protocols.git
 [submodule "modules/mailet"]
 	path = modules/mailet
-	url = https://github.com/linagora/james-mailet.git
+	url = https://github.com/aduprat/james-mailet.git
 [submodule "modules/mailbox"]
 	path = modules/mailbox
-	url = https://github.com/linagora/james-mailbox.git
+	url = https://github.com/aduprat/james-mailbox.git
 [submodule "modules/jspf"]
 	path = modules/jspf
-	url = https://github.com/linagora/james-jspf.git
+	url = https://github.com/aduprat/james-jspf.git
 [submodule "modules/jsieve"]
 	path = modules/jsieve
-	url = https://github.com/linagora/james-jsieve.git
+	url = https://github.com/aduprat/james-jsieve.git
 [submodule "modules/jdkim"]
 	path = modules/jdkim
-	url = https://github.com/linagora/james-jdkim.git
+	url = https://github.com/aduprat/james-jdkim.git
 [submodule "modules/james"]
 	path = modules/james
-	url = https://github.com/linagora/james.git
+	url = https://github.com/aduprat/james.git
 [submodule "james-project"]
 	path = james-project
-	url = https://github.com/linagora/james-project.git
+	url = https://github.com/aduprat/james-project.git
 [submodule "modules/mpt"]
 	path = modules/mpt
-	url = https://github.com/linagora/james-mpt.git
+	url = https://github.com/aduprat/james-mpt.git
